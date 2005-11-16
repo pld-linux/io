@@ -1,9 +1,5 @@
-#
-# Conditional build:
-%bcond_with	tests		# build with tests
-%bcond_without	tests		# build without tests
-#
 Summary:	Io programming language
+Summary(pl):	Jêzyk programowania Io
 Name:		io
 Version:	20051017
 Release:	1
@@ -15,21 +11,21 @@ URL:		http://www.iolanguage.com/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Io programming language
+Io programming language.
+
+%description -l pl
+Jêzyk programowania Io.
 
 %prep
 %setup -q -c 
 
 %build
-cd release/IoFull-2005-10-17/
+cd release/IoFull-2005-10-17
 rm vm/base/DynLib_OSX.{c,h}
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-# create directories if necessary
-#install -d $RPM_BUILD_ROOT
-#install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
