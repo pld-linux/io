@@ -12,20 +12,20 @@ BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	OpenGL-glut-devel
 BuildRequires:	ffmpeg-devel
 BuildRequires:	freetype-devel
-# glfw-devel (http://glfw.sourceforge.net/)
+BuildRequires:	glfw-devel
 BuildRequires:	gmp-devel
-# FIXME gnustep-gui-devel
+BuildRequires:	gnustep-gui-devel >= 0.11.0
 BuildRequires:	libdbi-devel
 BuildRequires:	libevent-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libsamplerate-devel
-# libsgml-devel (http://www.hick.org/)
+BuildRequires:	libsgml-devel
 BuildRequires:	libsndfile-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	pcre-devel
-#BuildRequires:	portaudio-devel
+#BuildRequires:	portaudio-devel >= 18 < 19
 BuildRequires:	postgresql-devel
 BuildRequires:	python-devel >= 1:2.5
 BuildRequires:	sed >= 4.0
@@ -175,11 +175,10 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/io/addons/Font/_build/dll
 %attr(755,root,root) %{_libdir}/io/addons/Font/_build/dll/libIoFont.so
 # R: glfw
-#%dir %{_libdir}/io/addons/GLFW
-#%dir %{_libdir}/io/addons/GLFW/_build
-#%dir %{_libdir}/io/addons/GLFW/_build/dll
-#%attr(755,root,root) %{_libdir}/io/addons/GLFW/_build/dll/libIoGLFW.so
-#%{_libdir}/io/addons/GLFW/io
+%dir %{_libdir}/io/addons/GLFW
+%dir %{_libdir}/io/addons/GLFW/_build
+%dir %{_libdir}/io/addons/GLFW/_build/dll
+%attr(755,root,root) %{_libdir}/io/addons/GLFW/_build/dll/libIoGLFW.so
 # R: OpenGL-GLU libjpeg libpng libtiff
 %dir %{_libdir}/io/addons/Image
 %dir %{_libdir}/io/addons/Image/_build
@@ -209,11 +208,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/io/addons/MD5/_build/dll/libIoMD5.so
 %{_libdir}/io/addons/MD5/io
 # R: gnustep-gui
-#%dir %{_libdir}/io/addons/ObjcBridge
-#%dir %{_libdir}/io/addons/ObjcBridge/_build
-#%dir %{_libdir}/io/addons/ObjcBridge/_build/dll
-#%attr(755,root,root) %{_libdir}/io/addons/ObjcBridge/_build/dll/libIoObjcBridge.so
-#%{_libdir}/io/addons/ObjcBridge/io
+%dir %{_libdir}/io/addons/ObjcBridge
+%dir %{_libdir}/io/addons/ObjcBridge/_build
+%dir %{_libdir}/io/addons/ObjcBridge/_build/dll
+%attr(755,root,root) %{_libdir}/io/addons/ObjcBridge/_build/dll/libIoObjcBridge.so
+%{_libdir}/io/addons/ObjcBridge/io
 # R: OpenGL-GLU OpenGL-glut
 %dir %{_libdir}/io/addons/OpenGL
 %dir %{_libdir}/io/addons/OpenGL/_build
@@ -255,11 +254,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/io/addons/Regex/_build/dll/libIoRegex.so
 %{_libdir}/io/addons/Regex/io
 # R: libsgml
-#%dir %{_libdir}/io/addons/SGML
-#%dir %{_libdir}/io/addons/SGML/_build
-#%dir %{_libdir}/io/addons/SGML/_build/dll
-#%attr(755,root,root) %{_libdir}/io/addons/SGML/_build/dll/libIoSGML.so
-#%{_libdir}/io/addons/SGML/io
+%dir %{_libdir}/io/addons/SGML
+%dir %{_libdir}/io/addons/SGML/_build
+%dir %{_libdir}/io/addons/SGML/_build/dll
+%attr(755,root,root) %{_libdir}/io/addons/SGML/_build/dll/libIoSGML.so
+%{_libdir}/io/addons/SGML/io
 #
 %dir %{_libdir}/io/addons/SHA1
 %dir %{_libdir}/io/addons/SHA1/_build
