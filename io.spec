@@ -1,5 +1,5 @@
 Summary:	Io programming language
-Summary(pl):	Jêzyk programowania Io
+Summary(pl.UTF-8):   JÄ™zyk programowania Io
 Name:		io
 Version:	20061207
 Release:	1
@@ -40,19 +40,19 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Io programming language.
 
-%description -l pl
-Jêzyk programowania Io.
+%description -l pl.UTF-8
+JÄ™zyk programowania Io.
 
 %package static
 Summary:	Static io library
-Summary(pl):	Statyczna biblioteka jêzyka io
+Summary(pl.UTF-8):   Statyczna biblioteka jÄ™zyka io
 Group:		Development/Libraries
 
 %description static
 Static io library.
 
-%description static -l pl
-Statyczna biblioteka jêzyka io.
+%description static -l pl.UTF-8
+Statyczna biblioteka jÄ™zyka io.
 
 %prep
 %setup -q -n Io-2006-12-07
