@@ -1,5 +1,5 @@
 Summary:	Io programming language
-Summary(pl.UTF-8):   Język programowania Io
+Summary(pl.UTF-8):	Język programowania Io
 Name:		io
 Version:	20061207
 Release:	1
@@ -45,7 +45,7 @@ Język programowania Io.
 
 %package static
 Summary:	Static io library
-Summary(pl.UTF-8):   Statyczna biblioteka języka io
+Summary(pl.UTF-8):	Statyczna biblioteka języka io
 Group:		Development/Libraries
 
 %description static
