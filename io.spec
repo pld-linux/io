@@ -32,7 +32,7 @@ BuildRequires:	libedit-devel
 BuildRequires:	libevent-devel
 BuildRequires:	libffi-devel
 BuildRequires:	libjpeg-devel
-BuildRequires:	libmemcached-devel
+BuildRequires:	libmemcached-devel >= 1.0.17
 BuildRequires:	libogg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libsamplerate-devel
@@ -82,11 +82,18 @@ Język programowania Io.
 %patch5 -p1
 %patch6 -p1
 
+%{__sed} -i -e 's,DESTINATION lib\>,DESTINATION lib${LIB_SUFFIX},' \
+	libs/*/CMakeLists.txt \
+	addons/*/CMakeLists.txt
+
 %build
 install -d build
 cd build
 %cmake .. \
 	-DCURSES_INCLUDE_PATH=/usr/include/ncurses
+
+# build is racy wrt. io_static
+%{__make} -j1
 
 %install
 rm -rf $RPM_BUILD_ROOT
