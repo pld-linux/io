@@ -1,0 +1,21 @@
+--- io-2011.09.12/libs/basekit/CMakeLists.txt.orig	2011-09-13 00:14:12.000000000 +0200
++++ io-2011.09.12/libs/basekit/CMakeLists.txt	2013-11-09 11:56:22.217694352 +0100
+@@ -17,6 +17,7 @@
+ 
+ # Now build the shared library
+ add_library(basekit SHARED ${SRCS})
++target_link_libraries(basekit -ldl -lm)
+ 
+ # ...And the static library
+ #add_library(basekit_static STATIC ${SRCS})
+--- io-2011.09.12/libs/iovm/CMakeLists.txt.orig	2011-09-13 00:14:12.000000000 +0200
++++ io-2011.09.12/libs/iovm/CMakeLists.txt	2013-11-09 11:57:12.164358923 +0100
+@@ -84,7 +84,7 @@
+ # Now build the shared library
+ add_library(iovmall SHARED ${SRCS})
+ add_dependencies(iovmall io2c basekit coroutine garbagecollector)
+-target_link_libraries(iovmall basekit coroutine garbagecollector)
++target_link_libraries(iovmall basekit coroutine garbagecollector -lm)
+ 
+ # The following add the install target, so we put libvmall.* in our
+ # install prefix.

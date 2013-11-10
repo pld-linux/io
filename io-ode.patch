@@ -1,0 +1,43 @@
+ODE requires precision selection (dSINGLE or dDOUBLE) before including headers.
+dWorldStepFast1 API is obsolete.
+--- io-2011.09.12/addons/ODE/CMakeLists.txt.orig	2011-09-13 00:14:12.000000000 +0200
++++ io-2011.09.12/addons/ODE/CMakeLists.txt	2013-11-10 13:42:02.230469137 +0100
+@@ -53,8 +53,9 @@
+ 
+ 	# Now build the shared library
+ 	add_library(IoODE SHARED ${SRCS})
++	add_definitions(-DdSINGLE)
+ 	add_dependencies(IoODE iovmall)
+-	target_link_libraries(IoODE iovmall ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
++	target_link_libraries(IoODE iovmall ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} -lode)
+ 
+ 	# Install the addon to our global addons hierarchy.
+ 	install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} DESTINATION lib/io/addons)
+--- io-2011.09.12/addons/ODE/source/IoODEWorld.c.orig	2011-09-13 00:14:12.000000000 +0200
++++ io-2011.09.12/addons/ODE/source/IoODEWorld.c	2013-11-10 14:12:12.697059780 +0100
+@@ -206,16 +206,6 @@
+ 	return self;
+ }
+ 
+-IoObject *IoODEWorld_stepFast1(IoODEWorld *self, IoObject *locals, IoMessage *m)
+-{
+-	const double stepSize = IoMessage_locals_doubleArgAt_(m, locals, 0);
+-	const int maxIterations = IoMessage_locals_intArgAt_(m, locals, 1);
+-
+-	IoODEWorld_assertHasWorldId(self, locals, m);
+-	dWorldStepFast1(WORLDID, stepSize, maxIterations);
+-	return self;
+-}
+-
+ IoObject *IoODEWorld_bodies(IoODEWorld *self, IoObject *locals, IoMessage *m)
+ {
+ 	IoODEWorld_assertHasWorldId(self, locals, m);
+--- io-2011.09.12/addons/ODE/source/IoODEWorld.h.orig	2011-09-13 00:14:12.000000000 +0200
++++ io-2011.09.12/addons/ODE/source/IoODEWorld.h	2013-11-10 14:12:34.303725505 +0100
+@@ -53,6 +53,5 @@
+ 
+ IoObject *IoODEWorld_step(IoODEWorld *self, IoObject *locals, IoMessage *m);
+ IoObject *IoODEWorld_quickStep(IoODEWorld *self, IoObject *locals, IoMessage *m);
+-IoObject *IoODEWorld_stepFast1(IoODEWorld *self, IoObject *locals, IoMessage *m);
+ 
+ #endif

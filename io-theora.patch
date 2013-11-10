@@ -1,0 +1,11 @@
+--- io-2011.09.12/modules/FindTheora.cmake.orig	2011-09-13 00:14:12.000000000 +0200
++++ io-2011.09.12/modules/FindTheora.cmake	2013-11-10 10:49:28.524236914 +0100
+@@ -5,7 +5,7 @@
+ 
+ FIND_PATH(THEORA_INCLUDE_DIR theora/theora.h theora/theoradec.h)
+ 
+-SET(THEORA_NAMES ${THEORA_NAMES} theora libtheora theoradec libtheoradec)
++SET(THEORA_NAMES ${THEORA_NAMES} theoradec libtheoradec theora libtheora)
+ FIND_LIBRARY(THEORA_LIBRARY NAMES ${THEORA_NAMES} PATH)
+ 
+ IF(THEORA_INCLUDE_DIR AND THEORA_LIBRARY)

@@ -1,0 +1,40 @@
+--- io-2011.09.12/addons/CMakeLists.txt.orig	2011-09-13 00:14:12.000000000 +0200
++++ io-2011.09.12/addons/CMakeLists.txt	2013-11-10 10:59:54.044210680 +0100
+@@ -54,7 +54,7 @@
+ add_subdirectory(Box)
+ add_subdirectory(CFFI)
+ add_subdirectory(CGI)
+-#add_subdirectory(Cairo) # XXX: Broken on OSX: ld: library not found for -lpng12
++add_subdirectory(Cairo)
+ add_subdirectory(Clutter)
+ add_subdirectory(ContinuedFraction)
+ add_subdirectory(Curses)
+@@ -79,8 +79,8 @@
+ add_subdirectory(MySQL)
+ #add_subdirectory(NetworkAdapter)
+ add_subdirectory(NotificationCenter)
+-#add_subdirectory(Oauth) # OAuth should no longer break CMake configuration on Windows now.
+-#add_subdirectory(ODE) # XXX: Can't meet dependencies
++add_subdirectory(Oauth)
++add_subdirectory(ODE)
+ add_subdirectory(ObjcBridge) # XXX: Broken for me -- Objective-C 2.0 not supported
+ add_subdirectory(Obsidian)
+ add_subdirectory(Ogg)
+@@ -99,7 +99,7 @@
+ add_subdirectory(SHA1)
+ #add_subdirectory(SQLite) # XXX: Want to delete in favour of SQLite3
+ add_subdirectory(SQLite3)
+-#add_subdirectory(SampleRateConverter)
++add_subdirectory(SampleRateConverter)
+ add_subdirectory(SecureSocket)
+ #add_subdirectory(SkipDB) # XXX: Disabled...why?
+   add_subdirectory(Socket)
+@@ -108,7 +108,7 @@
+ add_subdirectory(Syslog)
+ add_subdirectory(SystemCall)
+ #add_subdirectory(TagDB) # XXX: I can't meet dependencies
+-#add_subdirectory(TagLib)
++add_subdirectory(TagLib)
+ add_subdirectory(Theora)
+ add_subdirectory(Thread)
+ add_subdirectory(TokyoCabinet)

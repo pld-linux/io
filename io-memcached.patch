@@ -1,0 +1,30 @@
+--- io-2011.09.12/addons/Memcached/source/IoMemcached.c.orig	2011-09-13 00:14:12.000000000 +0200
++++ io-2011.09.12/addons/Memcached/source/IoMemcached.c	2013-11-10 10:02:10.404356034 +0100
+@@ -472,11 +472,13 @@
+ 	IoMap *results_map = IoMap_new(IOSTATE);
+ 
+ 	int i;
+-	for(i = 0; i < memcached_server_list_count(DATA(self)->mc->servers); i++) {
+-		memcached_server_st *server = DATA(self)->mc->servers + i;
++	for(i = 0; i < memcached_server_count(DATA(self)->mc); i++) {
++		memcached_instance_st *server = memcached_server_instance_by_position(DATA(self)->mc, i);
++		const char *server_name = memcached_server_name(server);
++		in_port_t server_port = memcached_server_port(server);
+ 
+ 		memcached_stat_st stats;
+-		if(memcached_stat_servername(&stats, "", server->hostname, server->port) != 0)
++		if(memcached_stat_servername(&stats, "", server_name, server_port) != 0)
+ 			continue;
+ 
+ 		memcached_return rc;
+@@ -498,8 +500,8 @@
+ 		free(ckeys);
+ 
+ 		// "127.0.0.1:11211"
+-		char *server_key = (char *) malloc((strlen(server->hostname) + 1 + 5 + 1) * sizeof(char));
+-		sprintf(server_key, "%s:%d", server->hostname, server->port);
++		char *server_key = (char *) malloc((strlen(server_name) + 1 + 5 + 1) * sizeof(char));
++		sprintf(server_key, "%s:%d", server_name, server_port);
+ 
+ 		IoMap_rawAtPut(results_map, IOSYMBOL(server_key), per_server_map);
+ 		free(server_key);

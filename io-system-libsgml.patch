@@ -1,0 +1,30 @@
+--- io-2011.09.12/addons/SGML/CMakeLists.txt.orig	2011-09-13 00:14:12.000000000 +0200
++++ io-2011.09.12/addons/SGML/CMakeLists.txt	2013-11-10 10:44:11.617583558 +0100
+@@ -7,9 +7,6 @@
+ make_build_bundle(_build)
+ set(BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR}/_build)
+ 
+-# Ensure we build libsgml before we continue
+-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/source/libsgml-1.1.4/src)
+-
+ # Generate the IoSGMLInit.c file.
+ # Argument SHOULD ALWAYS be the exact name of the addon, case is
+ # important.
+@@ -19,7 +16,7 @@
+ set(LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR}/_build/dll)
+ 
+ # Set up the include dir
+-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/source/libsgml-1.1.4/include)
++include_directories(/usr/include/sgml)
+ 
+ # Our library sources.
+ set(SRCS
+@@ -30,7 +27,7 @@
+ # Now build the shared library
+ add_library(IoSGML SHARED ${SRCS})
+ add_dependencies(IoSGML iovmall sgml)
+-target_link_libraries(IoSGML iovmall sgml)
++target_link_libraries(IoSGML iovmall -lsgml)
+ 
+ # Install the addon to our global addons hierarchy.
+ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} DESTINATION lib/io/addons)
